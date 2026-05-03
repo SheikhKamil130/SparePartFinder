@@ -1,0 +1,62 @@
+# Files to exclude from Render deployment slug
+# This reduces deployment size and speeds up builds
+
+# Documentation
+*.md
+!README.md
+!DEPLOYMENT.md
+
+# Development files
+.vscode/
+.idea/
+*.ipynb
+.ipynb_checkpoints/
+
+# Test files
+tests/
+test_*.py
+*_test.py
+run_tests.py
+
+# Training scripts (not needed in production)
+train_model.py
+train_enhanced.py
+evaluate_model.py
+
+# Large dataset (only needed for training)
+# Uncomment if you don't need the dataset in production
+# AutoMobile_Dataset/
+
+# Development artifacts
+*.pyc
+__pycache__/
+.pytest_cache/
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# Windows files
+*.bat
+start_app.bat
+
+# Documentation
+Project*.docx
+Final-Report.docx
+*.png
+confusion_matrix.png
+confidence_distribution.png
+evaluation_report.txt
+FINAL_REPORT.md
+
+# Database migration scripts (run manually)
+migrate_db.py
+
+# Frontend source (built separately)
+frontend/src/
+frontend/public/
+frontend/node_modules/
+frontend/package*.json
+frontend/vite.config.js
+frontend/README.md

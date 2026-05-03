@@ -1,0 +1,64 @@
+MODEL EVALUATION REPORT
+============================================================
+Accuracy: 0.8080
+Precision: 0.8664
+Recall: 0.8080
+F1-Score: 0.8010
+
+CLASSIFICATION REPORT:
+                      precision    recall  f1-score   support
+
+      AIR COMPRESSOR     0.8000    0.8000    0.8000         5
+          ALTERNATOR     1.0000    0.8000    0.8889         5
+             BATTERY     0.8333    1.0000    0.9091         5
+       BRAKE CALIPER     0.6250    1.0000    0.7692         5
+           BRAKE PAD     1.0000    1.0000    1.0000         5
+         BRAKE ROTOR     1.0000    0.4000    0.5714         5
+            CAMSHAFT     0.6250    1.0000    0.7692         5
+          CARBERATOR     0.8333    1.0000    0.9091         5
+        CLUTCH PLATE     0.8333    1.0000    0.9091         5
+         COIL SPRING     1.0000    1.0000    1.0000         5
+          CRANKSHAFT     1.0000    0.8000    0.8889         5
+       CYLINDER HEAD     1.0000    0.8000    0.8889         5
+         DISTRIBUTOR     1.0000    0.2000    0.3333         5
+        ENGINE BLOCK     0.8333    1.0000    0.9091         5
+        ENGINE VALVE     1.0000    1.0000    1.0000         5
+       FUEL INJECTOR     0.2667    0.8000    0.4000         5
+            FUSE BOX     1.0000    1.0000    1.0000         5
+             GAS CAP     0.6000    0.6000    0.6000         5
+          HEADLIGHTS     1.0000    0.8000    0.8889         5
+           IDLER ARM     1.0000    0.8000    0.8889         5
+       IGNITION COIL     0.7500    0.6000    0.6667         5
+  INSTRUMENT CLUSTER     1.0000    1.0000    1.0000         5
+         LEAF SPRING     0.7143    1.0000    0.8333         5
+   LOWER CONTROL ARM     1.0000    0.8000    0.8889         5
+             MUFFLER     1.0000    0.6000    0.7500         5
+          OIL FILTER     0.8333    1.0000    0.9091         5
+             OIL PAN     1.0000    0.8000    0.8889         5
+ OIL PRESSURE SENSOR     1.0000    0.2000    0.3333         5
+       OVERFLOW TANK     1.0000    0.8000    0.8889         5
+       OXYGEN SENSOR     1.0000    0.2000    0.3333         5
+              PISTON     1.0000    0.8000    0.8889         5
+      PRESSURE PLATE     1.0000    0.8000    0.8889         5
+            RADIATOR     1.0000    1.0000    1.0000         5
+        RADIATOR FAN     0.7143    1.0000    0.8333         5
+       RADIATOR HOSE     1.0000    0.6000    0.7500         5
+               RADIO     1.0000    1.0000    1.0000         5
+                 RIM     1.0000    0.6000    0.7500         5
+          SHIFT KNOB     1.0000    0.8000    0.8889         5
+         SIDE MIRROR     0.8333    1.0000    0.9091         5
+          SPARK PLUG     0.8000    0.8000    0.8000         5
+             SPOILER     1.0000    0.8000    0.8889         5
+             STARTER     0.3333    1.0000    0.5000         5
+          TAILLIGHTS     0.8333    1.0000    0.9091         5
+          THERMOSTAT     1.0000    1.0000    1.0000         5
+    TORQUE CONVERTER     1.0000    1.0000    1.0000         5
+        TRANSMISSION     0.0000    0.0000    0.0000         5
+VACUUM BRAKE BOOSTER     1.0000    0.6000    0.7500         5
+        VALVE LIFTER     0.6250    1.0000    0.7692         5
+          WATER PUMP     0.8000    0.8000    0.8000         5
+    WINDOW REGULATOR     0.8333    1.0000    0.9091         5
+
+            accuracy                         0.8080       250
+           macro avg     0.8664    0.8080    0.8010       250
+        weighted avg     0.8664    0.8080    0.8010       250
