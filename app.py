@@ -336,7 +336,7 @@ def init_database():
 @app.route('/api/scraping-stats', methods=['GET'])
 def get_scraping_stats():
     """Get scraping success/failure rates"""
-    return jsonify(scraper.scraping_stats)
+    return jsonify(scraper.scraping_stats)git add .
 
 if __name__ == '__main__':
     # Get port from environment variable (Render provides this)
