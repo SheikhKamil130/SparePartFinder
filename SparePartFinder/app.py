@@ -99,7 +99,7 @@ with app.app_context():
 with open('classes.json', 'r') as f:
     class_names = json.load(f)
 
-# Load the model
+# Load the model safely
 def load_model():
     try:
         model = models.mobilenet_v2(weights=None)  # Updated: use weights=None
@@ -123,9 +123,16 @@ def load_model():
         return model
     except Exception as e:
         logger.error(f"Failed to load model: {str(e)}")
-        raise
+        return None
 
-model = load_model()
+# Try to load model, but don't crash if it fails
+try:
+    model = load_model()
+    if model is None:
+        logger.warning("Model is None - predictions will not be available")
+except Exception as e:
+    logger.error(f"Exception during model loading: {str(e)}")
+    model = None
 
 from scraper import PartScraper
 
@@ -144,6 +151,10 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 def get_prediction(image_path):
+    # Check if model is available
+    if model is None:
+        raise RuntimeError("ML model is not available. Please check server logs.")
+    
     img = Image.open(image_path).convert('RGB')
     img_t = preprocess(img)
     batch_t = torch.unsqueeze(img_t, 0)
@@ -221,6 +232,10 @@ def index():
 def predict():
     # Handle file upload prediction
     try:
+        # Check if model is available
+        if model is None:
+            return jsonify({'error': 'ML model is not available. Please contact administrator.'}), 503
+        
         if 'file' not in request.files:
             return jsonify({'error': 'No file part'}), 400
         
@@ -251,6 +266,9 @@ def predict():
         
         return jsonify({'error': 'File type not allowed'}), 400
     
+    except RuntimeError as e:
+        logger.error(f"Model error: {str(e)}", exc_info=True)
+        return jsonify({'error': str(e)}), 503
     except Exception as e:
         logger.error(f"Prediction error: {str(e)}", exc_info=True)
         return jsonify({'error': 'Internal server error during prediction'}), 500
@@ -339,7 +357,7 @@ def get_scraping_stats():
     return jsonify(scraper.scraping_stats)
 
 if __name__ == '__main__':
-    # Get port from environment variable (Render provides this)
-    port = int(os.environ.get('PORT', 5000))
+    # Get port from environment variable (Render uses PORT, default to 10000)
+    port = int(os.environ.get("PORT", 10000))
     # Bind to 0.0.0.0 to accept external connections
-    app.run(host='0.0.0.0', port=port, debug=os.environ.get('FLASK_ENV') != 'production')
+    app.run(host="0.0.0.0", port=port, debug=os.environ.get('FLASK_ENV') != 'production')
