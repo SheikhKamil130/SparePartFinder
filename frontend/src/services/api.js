@@ -7,7 +7,7 @@ export const predictPart = async (file) => {
   const formData = new FormData();
   formData.append('file', file);
   
-  const response = await axios.post(`${API_BASE_URL}/predict`, formData, {
+  const response = await axios.post(`${API_BASE_URL}/api/test-predict`, formData, {
     headers: { 'Content-Type': 'multipart/form-data' }
   });
   return response.data;
