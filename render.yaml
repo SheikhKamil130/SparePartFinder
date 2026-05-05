@@ -5,7 +5,7 @@ services:
     env: python
     region: oregon
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120 --log-level info
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
     envVars:
       - key: FLASK_ENV
         value: production
@@ -19,19 +19,10 @@ services:
         value: 3.11.0
     healthCheckPath: /api/analytics
 
-  # PostgreSQL Database
-  - type: pserv
-    name: sparepartfinder-db
-    env: docker
-    region: oregon
-    plan: free
-    ipAllowList: []
-
   # Frontend React Static Site
   - type: web
     name: sparepartfinder-frontend
     env: static
-    region: oregon
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: frontend/dist
     routes:
@@ -41,3 +32,9 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://sparepartfinder-backend.onrender.com
+
+# PostgreSQL Database
+databases:
+  - name: sparepartfinder-db
+    plan: free
+    region: oregon
