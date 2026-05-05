@@ -307,6 +307,20 @@ def predict():
         logger.error(f"Prediction error: {str(e)}", exc_info=True)
         return jsonify({'error': 'Internal server error during prediction'}), 500
 
+@app.route('/api/test-predict', methods=['POST'])
+def test_predict():
+    """Test route that returns mock prediction data for debugging"""
+    return jsonify({
+        "part_name": "SHIFT KNOB",
+        "confidence": "95.00%",
+        "prices": [],
+        "details": {
+            "Weight": "2.5 kg",
+            "Material": "High-Grade Polymer",
+            "Manufacturer": "OEM Standard"
+        }
+    })
+
 @app.route('/api/parts', methods=['GET'])
 def get_parts():
     """Get all parts from internal inventory database"""
