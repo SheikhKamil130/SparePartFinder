@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Use environment variable for production, empty string for development (uses Vite proxy)
-const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+// Use environment variable for production, fallback to backend URL
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://sparepartfinder-1.onrender.com';
 
 export const predictPart = async (file) => {
   const formData = new FormData();
